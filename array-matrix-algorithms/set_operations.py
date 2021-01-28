@@ -13,7 +13,9 @@ def create_set(length, min_val, max_val):
 
 
 def union(set_as_arr1, set_as_arr2):
-    result_set = set_as_arr1
+    result_set = []
+    for val in set_as_arr1:
+        result_set.append(val)
     for val in set_as_arr2:
         if val not in result_set:
             result_set.append(val)
