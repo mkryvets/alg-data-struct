@@ -62,17 +62,105 @@ def sort_desc(arr):
     return arr
 
 
-def sort_min_center(arr):
-    pass
+# 0 1 2 3 4 5 6 7
+def sort_min_center(arr):  # 0 1 2 3 4 5
+    result_arr = [0] * len(arr)
+    temp_arr = []
+    for el in arr:
+        temp_arr.append(el)
+    if len(arr) % 2 == 1:
+        center_index = int(len(arr) / 2)
+        min_el = min_element(temp_arr)
+        result_arr[center_index] = min_el[0]
+        del temp_arr[min_el[1]]
+        boundary = center_index + 1
+        for i in range(1, boundary):
+            min_el_left = min_element(temp_arr)
+            result_arr[center_index - i] = min_el_left[0]
+            del temp_arr[min_el_left[1]]
+            min_el_right = min_element(temp_arr)
+            result_arr[center_index + i] = min_el_right[0]
+            del temp_arr[min_el_right[1]]
+    else:
+        left_center_index = int((len(arr) / 2)) - 1
+        right_center_index = int(len(arr) / 2)
+        boundary = int(len(arr) / 2)
+        for i in range(0, boundary):
+            min_el_left = min_element(temp_arr)
+            result_arr[left_center_index - i] = min_el_left[0]
+            del temp_arr[min_el_left[1]]
+            min_el_right = min_element(temp_arr)
+            result_arr[right_center_index + i] = min_el_right[0]
+            del temp_arr[min_el_right[1]]
+    return result_arr
 
 
 def sort_max_center(arr):
-    pass
+    result_arr = [0] * len(arr)
+    temp_arr = []
+    for el in arr:
+        temp_arr.append(el)
+    if len(arr) % 2 == 1:
+        center_index = int(len(arr) / 2)
+        max_el = max_element(temp_arr)
+        result_arr[center_index] = max_el[0]
+        del temp_arr[max_el[1]]
+        boundary = center_index + 1
+        for i in range(1, boundary):
+            max_el_left = max_element(temp_arr)
+            result_arr[center_index - i] = max_el_left[0]
+            del temp_arr[max_el_left[1]]
+            max_el_right = max_element(temp_arr)
+            result_arr[center_index + i] = max_el_right[0]
+            del temp_arr[max_el_right[1]]
+    else:
+        left_center_index = int((len(arr) / 2)) - 1
+        right_center_index = int(len(arr) / 2)
+        boundary = int(len(arr) / 2)
+        for i in range(0, boundary):
+            max_el_left = max_element(temp_arr)
+            result_arr[left_center_index - i] = max_el_left[0]
+            del temp_arr[max_el_left[1]]
+            max_el_right = max_element(temp_arr)
+            result_arr[right_center_index + i] = max_el_right[0]
+            del temp_arr[max_el_right[1]]
+    return result_arr
 
 
 def sort_max_min(arr):
-    pass
+    i = 0
+    result_arr = []
+    temp_arr = []
+    for el in arr:
+        temp_arr.append(el)
+    while i < len(arr):
+        max_el = max_element(temp_arr)
+        result_arr.append(max_el[0])
+        del temp_arr[max_el[1]]
+        i += 1
+        if i < len(arr):
+            min_el = min_element(temp_arr)
+            result_arr.append(min_el[0])
+            del temp_arr[min_el[1]]
+            i += 1
+    return result_arr
 
 
 def sort_index_even_desc_odd_asc(arr):
-    pass
+    even_elements = []
+    odd_elements = []
+    result_arr = []
+    for i in range(len(arr)):
+        if i % 2 == 0:
+            even_elements.append(arr[i])
+        else:
+            odd_elements.append((arr[i]))
+    even_elements = sort_desc(even_elements)
+    odd_elements = sort_asc(odd_elements)
+    boundary = int(len(arr) / 2)
+    for i in range(0, boundary):
+        result_arr.append(even_elements[i])
+        result_arr.append(odd_elements[i])
+    if len(arr) % 2 == 1:
+        result_arr.append(even_elements[boundary])
+    return result_arr
