@@ -48,22 +48,23 @@ def max_element_partial(arr, start, end):
     return max_el, max_el_index
 
 
-def sort_asc(arr):
+def sort_asc(array):
+    arr = array.copy()
     for i in range(len(arr) - 1):
         min_el_index = min_element_partial(arr, i, len(arr) - 1)[1]
         arr[i], arr[min_el_index] = arr[min_el_index], arr[i]
     return arr
 
 
-def sort_desc(arr):
+def sort_desc(array):
+    arr = array.copy()
     for i in range(len(arr) - 1):
         max_el_index = max_element_partial(arr, i, len(arr) - 1)[1]
         arr[i], arr[max_el_index] = arr[max_el_index], arr[i]
     return arr
 
 
-# 0 1 2 3 4 5 6 7
-def sort_min_center(arr):  # 0 1 2 3 4 5
+def sort_min_center(arr):
     result_arr = [0] * len(arr)
     temp_arr = []
     for el in arr:
