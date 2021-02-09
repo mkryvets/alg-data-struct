@@ -1,6 +1,7 @@
 from array_algorithms import *
 from set_operations import *
 from matrix_algorithms import *
+from three_dim_array_algorithms import *
 
 
 test_arr = create_array(10, -100, 100)
@@ -16,9 +17,11 @@ print('Elements with even indices ordered by descending, odd - by ascending: {}'
 print('\n')
 
 
-test_matrix = create_matrix(11, 0, 9)
+test_matrix = create_matrix(11, 10, 99)
 print('Matrix:')
 print_matrix(test_matrix)
+print('Min element of the matrix is: {}'.format(min_matrix_element(test_matrix)))
+print('Max element of the matrix is: {}'.format(max_matrix_element(test_matrix)), '\n')
 print('Horizontal ascending sort:')
 print_matrix(sort_horizontal_asc(test_matrix))
 print('Vertical ascending sort:')
@@ -29,6 +32,19 @@ print('Inner snake sort:')
 print_matrix(sort_snake_in(test_matrix))
 print('Horizontal rolling asc-desc sort:')
 print_matrix(sort_horizontal_asc_desc(test_matrix))
+print('Special snake sort:')
+print_matrix(sort_snake_special(test_matrix))
+print()
+
+
+test_3dim_arr = create_3dim_array(3, 10, 99)
+print('Three-dim array:')
+print_3dim_array(test_3dim_arr)
+print('Min element of the three-dim array is: {}'.format(min_3dim_array_element(test_3dim_arr)))
+print('Max element of the three-dim array is: {}'.format(max_3dim_array_element(test_3dim_arr)), '\n')
+print('Three-dim array sort:')
+print_3dim_array(sort_3dim_array(test_3dim_arr))
+print()
 
 
 test_set1 = create_set(10, 0, 20)
